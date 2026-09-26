@@ -462,6 +462,15 @@ MoonTV 支持标准的苹果 CMS V10 API 格式。
 
 dockge/komodo 等 docker compose UI 也有自动更新功能
 
+### Fork 上游同步（GitHub Actions）
+
+仓库内置了 `.github/workflows/sync.yml` 用于定时执行 `gh repo sync`。维护者需要在仓库 **Settings > Secrets and variables > Actions** 中创建 `SYNC_TOKEN`：
+
+- Classic PAT：至少授予 `repo` + `workflow` scope。
+- Fine-grained token：为 `sinpor/MoonTVPlus` 授予 **Contents: Read and write** 与 **Workflows: Read and write**。
+
+如果未配置 `SYNC_TOKEN`，工作流会在执行同步前直接报错并提示缺失 secret，避免出现模糊的权限失败信息。
+
 ## 环境变量
 
 | 变量                                     | 说明                                                         | 可选值                      | 默认值                                                       |
